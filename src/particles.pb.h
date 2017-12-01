@@ -89,7 +89,6 @@ inline bool ProtoAcknowledge_ACK_Parse(
 enum ProtoRequest_REQ {
   ProtoRequest_REQ_SIZE = 0,
   ProtoRequest_REQ_SET = 1,
-  ProtoRequest_REQ_COUNT = 2,
   ProtoRequest_REQ_HAS_NEW = 3,
   ProtoRequest_REQ_ProtoRequest_REQ_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProtoRequest_REQ_ProtoRequest_REQ_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
@@ -439,6 +438,12 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
+  // uint64 count = 2;
+  void clear_count();
+  static const int kCountFieldNumber = 2;
+  ::google::protobuf::uint64 count() const;
+  void set_count(::google::protobuf::uint64 value);
+
   // .ProtoAcknowledge.ACK state = 1;
   void clear_state();
   static const int kStateFieldNumber = 1;
@@ -449,6 +454,7 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 count_;
   int state_;
   mutable int _cached_size_;
   friend struct protobuf_particles_2eproto::TableStruct;
@@ -539,8 +545,6 @@ class ProtoRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
     ProtoRequest_REQ_SIZE;
   static const REQ SET =
     ProtoRequest_REQ_SET;
-  static const REQ COUNT =
-    ProtoRequest_REQ_COUNT;
   static const REQ HAS_NEW =
     ProtoRequest_REQ_HAS_NEW;
   static inline bool REQ_IsValid(int value) {
@@ -566,6 +570,12 @@ class ProtoRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
+  // uint64 count = 2;
+  void clear_count();
+  static const int kCountFieldNumber = 2;
+  ::google::protobuf::uint64 count() const;
+  void set_count(::google::protobuf::uint64 value);
+
   // .ProtoRequest.REQ value = 1;
   void clear_value();
   static const int kValueFieldNumber = 1;
@@ -576,6 +586,7 @@ class ProtoRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 count_;
   int value_;
   mutable int _cached_size_;
   friend struct protobuf_particles_2eproto::TableStruct;
@@ -936,6 +947,20 @@ inline void ProtoAcknowledge::set_state(::ProtoAcknowledge_ACK value) {
   // @@protoc_insertion_point(field_set:ProtoAcknowledge.state)
 }
 
+// uint64 count = 2;
+inline void ProtoAcknowledge::clear_count() {
+  count_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 ProtoAcknowledge::count() const {
+  // @@protoc_insertion_point(field_get:ProtoAcknowledge.count)
+  return count_;
+}
+inline void ProtoAcknowledge::set_count(::google::protobuf::uint64 value) {
+  
+  count_ = value;
+  // @@protoc_insertion_point(field_set:ProtoAcknowledge.count)
+}
+
 // -------------------------------------------------------------------
 
 // ProtoRequest
@@ -952,6 +977,20 @@ inline void ProtoRequest::set_value(::ProtoRequest_REQ value) {
   
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtoRequest.value)
+}
+
+// uint64 count = 2;
+inline void ProtoRequest::clear_count() {
+  count_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 ProtoRequest::count() const {
+  // @@protoc_insertion_point(field_get:ProtoRequest.count)
+  return count_;
+}
+inline void ProtoRequest::set_count(::google::protobuf::uint64 value) {
+  
+  count_ = value;
+  // @@protoc_insertion_point(field_set:ProtoRequest.count)
 }
 
 // -------------------------------------------------------------------

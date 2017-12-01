@@ -52,9 +52,10 @@ class Server:
         def send_ack(conn, pos):
             pa = ProtoAcknowledge()
             if(pos):
-                pa.value = ProtoAcknowledge.POSITIVE
+                pa.state = ProtoAcknowledge.POSITIVE
             else:
-                pa.value = ProtoAcknowledge.NEGATIVE
+                pa.state = ProtoAcknowledge.NEGATIVE
+            print("Sending ack: ", pos, " ", pa.SerializeToString())
             conn.send(pa.SerializeToString())
         
         data = ''
