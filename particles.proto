@@ -13,11 +13,19 @@ message ProtoParticle {
 
 message ProtoAcknowledge {
 	enum ACK {
-		NONE = 0;
-		CONTINUE = 1;
-		STOP = 2;
+		POSITIVE = 0;
+		NEGATIVE = 1;
 	}
 	ACK state = 1;
+}
+
+message ProtoRequest {
+	enum REQ {
+		SIZE = 0;
+		SET = 1;
+		HAS_NEW = 3;
+	}
+	REQ value = 1;
 }
 
 message ProtoSize {

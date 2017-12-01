@@ -18,8 +18,11 @@ from __future__ import print_function
 
 import numpy as np
 import cv2
+from server import Server
 
 scale = 0.4
+
+server = Server(32323)
 
 def draw_flow(img, flow, step=16):
     h, w = img.shape[:2]

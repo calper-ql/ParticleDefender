@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='particles.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"a\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"\'\n\x03\x41\x43K\x12\x08\n\x04NONE\x10\x00\x12\x0c\n\x08\x43ONTINUE\x10\x01\x12\x08\n\x04STOP\x10\x02\"\x1a\n\tProtoSize\x12\r\n\x05value\x18\x01 \x01(\x04\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
+  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"[\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"!\n\x03\x41\x43K\x12\x0c\n\x08POSITIVE\x10\x00\x12\x0c\n\x08NEGATIVE\x10\x01\"b\n\x0cProtoRequest\x12 \n\x05value\x18\x01 \x01(\x0e\x32\x11.ProtoRequest.REQ\"0\n\x03REQ\x12\x08\n\x04SIZE\x10\x00\x12\x07\n\x03SET\x10\x01\x12\t\n\x05\x43OUNT\x10\x02\x12\x0b\n\x07HAS_NEW\x10\x03\"\x1a\n\tProtoSize\x12\r\n\x05value\x18\x01 \x01(\x04\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
 )
 
 
@@ -31,24 +31,50 @@ _PROTOACKNOWLEDGE_ACK = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='NONE', index=0, number=0,
+      name='POSITIVE', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CONTINUE', index=1, number=1,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='STOP', index=2, number=2,
+      name='NEGATIVE', index=1, number=1,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=206,
-  serialized_end=245,
+  serialized_end=239,
 )
 _sym_db.RegisterEnumDescriptor(_PROTOACKNOWLEDGE_ACK)
+
+_PROTOREQUEST_REQ = _descriptor.EnumDescriptor(
+  name='REQ',
+  full_name='ProtoRequest.REQ',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='SIZE', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET', index=1, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='COUNT', index=2, number=2,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HAS_NEW', index=3, number=3,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=291,
+  serialized_end=339,
+)
+_sym_db.RegisterEnumDescriptor(_PROTOREQUEST_REQ)
 
 
 _PROTOVECTOR = _descriptor.Descriptor(
@@ -162,7 +188,39 @@ _PROTOACKNOWLEDGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=148,
-  serialized_end=245,
+  serialized_end=239,
+)
+
+
+_PROTOREQUEST = _descriptor.Descriptor(
+  name='ProtoRequest',
+  full_name='ProtoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='ProtoRequest.value', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _PROTOREQUEST_REQ,
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=241,
+  serialized_end=339,
 )
 
 
@@ -192,8 +250,8 @@ _PROTOSIZE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=247,
-  serialized_end=273,
+  serialized_start=341,
+  serialized_end=367,
 )
 
 
@@ -223,18 +281,21 @@ _PROTOPARTICLESET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=275,
-  serialized_end=328,
+  serialized_start=369,
+  serialized_end=422,
 )
 
 _PROTOPARTICLE.fields_by_name['position'].message_type = _PROTOVECTOR
 _PROTOPARTICLE.fields_by_name['velocity'].message_type = _PROTOVECTOR
 _PROTOACKNOWLEDGE.fields_by_name['state'].enum_type = _PROTOACKNOWLEDGE_ACK
 _PROTOACKNOWLEDGE_ACK.containing_type = _PROTOACKNOWLEDGE
+_PROTOREQUEST.fields_by_name['value'].enum_type = _PROTOREQUEST_REQ
+_PROTOREQUEST_REQ.containing_type = _PROTOREQUEST
 _PROTOPARTICLESET.fields_by_name['particles'].message_type = _PROTOPARTICLE
 DESCRIPTOR.message_types_by_name['ProtoVector'] = _PROTOVECTOR
 DESCRIPTOR.message_types_by_name['ProtoParticle'] = _PROTOPARTICLE
 DESCRIPTOR.message_types_by_name['ProtoAcknowledge'] = _PROTOACKNOWLEDGE
+DESCRIPTOR.message_types_by_name['ProtoRequest'] = _PROTOREQUEST
 DESCRIPTOR.message_types_by_name['ProtoSize'] = _PROTOSIZE
 DESCRIPTOR.message_types_by_name['ProtoParticleSet'] = _PROTOPARTICLESET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -259,6 +320,13 @@ ProtoAcknowledge = _reflection.GeneratedProtocolMessageType('ProtoAcknowledge', 
   # @@protoc_insertion_point(class_scope:ProtoAcknowledge)
   ))
 _sym_db.RegisterMessage(ProtoAcknowledge)
+
+ProtoRequest = _reflection.GeneratedProtocolMessageType('ProtoRequest', (_message.Message,), dict(
+  DESCRIPTOR = _PROTOREQUEST,
+  __module__ = 'particles_pb2'
+  # @@protoc_insertion_point(class_scope:ProtoRequest)
+  ))
+_sym_db.RegisterMessage(ProtoRequest)
 
 ProtoSize = _reflection.GeneratedProtocolMessageType('ProtoSize', (_message.Message,), dict(
   DESCRIPTOR = _PROTOSIZE,

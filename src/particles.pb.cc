@@ -31,6 +31,11 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<ProtoAcknowledge>
      _instance;
 } _ProtoAcknowledge_default_instance_;
+class ProtoRequestDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<ProtoRequest>
+     _instance;
+} _ProtoRequest_default_instance_;
 class ProtoSizeDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<ProtoSize>
@@ -47,8 +52,8 @@ namespace protobuf_particles_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[5];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+::google::protobuf::Metadata file_level_metadata[6];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 }  // namespace
 
@@ -63,6 +68,7 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
@@ -93,6 +99,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoAcknowledge, state_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoRequest, value_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoSize, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -109,14 +121,16 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTR
   { 0, -1, sizeof(ProtoVector)},
   { 8, -1, sizeof(ProtoParticle)},
   { 15, -1, sizeof(ProtoAcknowledge)},
-  { 21, -1, sizeof(ProtoSize)},
-  { 27, -1, sizeof(ProtoParticleSet)},
+  { 21, -1, sizeof(ProtoRequest)},
+  { 27, -1, sizeof(ProtoSize)},
+  { 33, -1, sizeof(ProtoParticleSet)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoVector_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoParticle_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoAcknowledge_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoSize_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProtoParticleSet_default_instance_),
 };
@@ -139,7 +153,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 6);
 }
 
 }  // namespace
@@ -153,7 +167,9 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_ProtoParticle_default_instance_);_ProtoAcknowledge_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_ProtoAcknowledge_default_instance_);_ProtoSize_default_instance_._instance.DefaultConstruct();
+      &_ProtoAcknowledge_default_instance_);_ProtoRequest_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_ProtoRequest_default_instance_);_ProtoSize_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_ProtoSize_default_instance_);_ProtoParticleSet_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
@@ -174,15 +190,17 @@ void AddDescriptorsImpl() {
       "\n\017particles.proto\".\n\013ProtoVector\022\t\n\001x\030\001 "
       "\001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"O\n\rProtoPartic"
       "le\022\036\n\010position\030\001 \001(\0132\014.ProtoVector\022\036\n\010ve"
-      "locity\030\002 \001(\0132\014.ProtoVector\"a\n\020ProtoAckno"
+      "locity\030\002 \001(\0132\014.ProtoVector\"[\n\020ProtoAckno"
       "wledge\022$\n\005state\030\001 \001(\0162\025.ProtoAcknowledge"
-      ".ACK\"\'\n\003ACK\022\010\n\004NONE\020\000\022\014\n\010CONTINUE\020\001\022\010\n\004S"
-      "TOP\020\002\"\032\n\tProtoSize\022\r\n\005value\030\001 \001(\004\"5\n\020Pro"
-      "toParticleSet\022!\n\tparticles\030\001 \003(\0132\016.Proto"
-      "Particleb\006proto3"
+      ".ACK\"!\n\003ACK\022\014\n\010POSITIVE\020\000\022\014\n\010NEGATIVE\020\001\""
+      "b\n\014ProtoRequest\022 \n\005value\030\001 \001(\0162\021.ProtoRe"
+      "quest.REQ\"0\n\003REQ\022\010\n\004SIZE\020\000\022\007\n\003SET\020\001\022\t\n\005C"
+      "OUNT\020\002\022\013\n\007HAS_NEW\020\003\"\032\n\tProtoSize\022\r\n\005valu"
+      "e\030\001 \001(\004\"5\n\020ProtoParticleSet\022!\n\tparticles"
+      "\030\001 \003(\0132\016.ProtoParticleb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 336);
+      descriptor, 430);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "particles.proto", &protobuf_RegisterTypes);
 }
@@ -209,7 +227,6 @@ bool ProtoAcknowledge_ACK_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
-    case 2:
       return true;
     default:
       return false;
@@ -217,12 +234,36 @@ bool ProtoAcknowledge_ACK_IsValid(int value) {
 }
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const ProtoAcknowledge_ACK ProtoAcknowledge::NONE;
-const ProtoAcknowledge_ACK ProtoAcknowledge::CONTINUE;
-const ProtoAcknowledge_ACK ProtoAcknowledge::STOP;
+const ProtoAcknowledge_ACK ProtoAcknowledge::POSITIVE;
+const ProtoAcknowledge_ACK ProtoAcknowledge::NEGATIVE;
 const ProtoAcknowledge_ACK ProtoAcknowledge::ACK_MIN;
 const ProtoAcknowledge_ACK ProtoAcknowledge::ACK_MAX;
 const int ProtoAcknowledge::ACK_ARRAYSIZE;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+const ::google::protobuf::EnumDescriptor* ProtoRequest_REQ_descriptor() {
+  protobuf_particles_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_particles_2eproto::file_level_enum_descriptors[1];
+}
+bool ProtoRequest_REQ_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const ProtoRequest_REQ ProtoRequest::SIZE;
+const ProtoRequest_REQ ProtoRequest::SET;
+const ProtoRequest_REQ ProtoRequest::COUNT;
+const ProtoRequest_REQ ProtoRequest::HAS_NEW;
+const ProtoRequest_REQ ProtoRequest::REQ_MIN;
+const ProtoRequest_REQ ProtoRequest::REQ_MAX;
+const int ProtoRequest::REQ_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 // ===================================================================
@@ -1209,6 +1250,262 @@ void ProtoAcknowledge::set_state(::ProtoAcknowledge_ACK value) {
   
   state_ = value;
   // @@protoc_insertion_point(field_set:ProtoAcknowledge.state)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ProtoRequest::kValueFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ProtoRequest::ProtoRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_particles_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ProtoRequest)
+}
+ProtoRequest::ProtoRequest(const ProtoRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  value_ = from.value_;
+  // @@protoc_insertion_point(copy_constructor:ProtoRequest)
+}
+
+void ProtoRequest::SharedCtor() {
+  value_ = 0;
+  _cached_size_ = 0;
+}
+
+ProtoRequest::~ProtoRequest() {
+  // @@protoc_insertion_point(destructor:ProtoRequest)
+  SharedDtor();
+}
+
+void ProtoRequest::SharedDtor() {
+}
+
+void ProtoRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ProtoRequest::descriptor() {
+  protobuf_particles_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_particles_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const ProtoRequest& ProtoRequest::default_instance() {
+  protobuf_particles_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+ProtoRequest* ProtoRequest::New(::google::protobuf::Arena* arena) const {
+  ProtoRequest* n = new ProtoRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ProtoRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:ProtoRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  value_ = 0;
+  _internal_metadata_.Clear();
+}
+
+bool ProtoRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ProtoRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .ProtoRequest.REQ value = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_value(static_cast< ::ProtoRequest_REQ >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ProtoRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ProtoRequest)
+  return false;
+#undef DO_
+}
+
+void ProtoRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ProtoRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .ProtoRequest.REQ value = 1;
+  if (this->value() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->value(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ProtoRequest)
+}
+
+::google::protobuf::uint8* ProtoRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ProtoRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .ProtoRequest.REQ value = 1;
+  if (this->value() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->value(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ProtoRequest)
+  return target;
+}
+
+size_t ProtoRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ProtoRequest)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // .ProtoRequest.REQ value = 1;
+  if (this->value() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->value());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ProtoRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ProtoRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ProtoRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const ProtoRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ProtoRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ProtoRequest)
+    MergeFrom(*source);
+  }
+}
+
+void ProtoRequest::MergeFrom(const ProtoRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ProtoRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.value() != 0) {
+    set_value(from.value());
+  }
+}
+
+void ProtoRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ProtoRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ProtoRequest::CopyFrom(const ProtoRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ProtoRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ProtoRequest::IsInitialized() const {
+  return true;
+}
+
+void ProtoRequest::Swap(ProtoRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ProtoRequest::InternalSwap(ProtoRequest* other) {
+  using std::swap;
+  swap(value_, other->value_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ProtoRequest::GetMetadata() const {
+  protobuf_particles_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_particles_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ProtoRequest
+
+// .ProtoRequest.REQ value = 1;
+void ProtoRequest::clear_value() {
+  value_ = 0;
+}
+::ProtoRequest_REQ ProtoRequest::value() const {
+  // @@protoc_insertion_point(field_get:ProtoRequest.value)
+  return static_cast< ::ProtoRequest_REQ >(value_);
+}
+void ProtoRequest::set_value(::ProtoRequest_REQ value) {
+  
+  value_ = value;
+  // @@protoc_insertion_point(field_set:ProtoRequest.value)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -40,6 +40,9 @@ extern ProtoParticleDefaultTypeInternal _ProtoParticle_default_instance_;
 class ProtoParticleSet;
 class ProtoParticleSetDefaultTypeInternal;
 extern ProtoParticleSetDefaultTypeInternal _ProtoParticleSet_default_instance_;
+class ProtoRequest;
+class ProtoRequestDefaultTypeInternal;
+extern ProtoRequestDefaultTypeInternal _ProtoRequest_default_instance_;
 class ProtoSize;
 class ProtoSizeDefaultTypeInternal;
 extern ProtoSizeDefaultTypeInternal _ProtoSize_default_instance_;
@@ -63,15 +66,14 @@ void InitDefaults();
 }  // namespace protobuf_particles_2eproto
 
 enum ProtoAcknowledge_ACK {
-  ProtoAcknowledge_ACK_NONE = 0,
-  ProtoAcknowledge_ACK_CONTINUE = 1,
-  ProtoAcknowledge_ACK_STOP = 2,
+  ProtoAcknowledge_ACK_POSITIVE = 0,
+  ProtoAcknowledge_ACK_NEGATIVE = 1,
   ProtoAcknowledge_ACK_ProtoAcknowledge_ACK_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProtoAcknowledge_ACK_ProtoAcknowledge_ACK_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ProtoAcknowledge_ACK_IsValid(int value);
-const ProtoAcknowledge_ACK ProtoAcknowledge_ACK_ACK_MIN = ProtoAcknowledge_ACK_NONE;
-const ProtoAcknowledge_ACK ProtoAcknowledge_ACK_ACK_MAX = ProtoAcknowledge_ACK_STOP;
+const ProtoAcknowledge_ACK ProtoAcknowledge_ACK_ACK_MIN = ProtoAcknowledge_ACK_POSITIVE;
+const ProtoAcknowledge_ACK ProtoAcknowledge_ACK_ACK_MAX = ProtoAcknowledge_ACK_NEGATIVE;
 const int ProtoAcknowledge_ACK_ACK_ARRAYSIZE = ProtoAcknowledge_ACK_ACK_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ProtoAcknowledge_ACK_descriptor();
@@ -83,6 +85,29 @@ inline bool ProtoAcknowledge_ACK_Parse(
     const ::std::string& name, ProtoAcknowledge_ACK* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ProtoAcknowledge_ACK>(
     ProtoAcknowledge_ACK_descriptor(), name, value);
+}
+enum ProtoRequest_REQ {
+  ProtoRequest_REQ_SIZE = 0,
+  ProtoRequest_REQ_SET = 1,
+  ProtoRequest_REQ_COUNT = 2,
+  ProtoRequest_REQ_HAS_NEW = 3,
+  ProtoRequest_REQ_ProtoRequest_REQ_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ProtoRequest_REQ_ProtoRequest_REQ_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ProtoRequest_REQ_IsValid(int value);
+const ProtoRequest_REQ ProtoRequest_REQ_REQ_MIN = ProtoRequest_REQ_SIZE;
+const ProtoRequest_REQ ProtoRequest_REQ_REQ_MAX = ProtoRequest_REQ_HAS_NEW;
+const int ProtoRequest_REQ_REQ_ARRAYSIZE = ProtoRequest_REQ_REQ_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ProtoRequest_REQ_descriptor();
+inline const ::std::string& ProtoRequest_REQ_Name(ProtoRequest_REQ value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ProtoRequest_REQ_descriptor(), value);
+}
+inline bool ProtoRequest_REQ_Parse(
+    const ::std::string& name, ProtoRequest_REQ* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ProtoRequest_REQ>(
+    ProtoRequest_REQ_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -387,12 +412,10 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
   // nested types ----------------------------------------------------
 
   typedef ProtoAcknowledge_ACK ACK;
-  static const ACK NONE =
-    ProtoAcknowledge_ACK_NONE;
-  static const ACK CONTINUE =
-    ProtoAcknowledge_ACK_CONTINUE;
-  static const ACK STOP =
-    ProtoAcknowledge_ACK_STOP;
+  static const ACK POSITIVE =
+    ProtoAcknowledge_ACK_POSITIVE;
+  static const ACK NEGATIVE =
+    ProtoAcknowledge_ACK_NEGATIVE;
   static inline bool ACK_IsValid(int value) {
     return ProtoAcknowledge_ACK_IsValid(value);
   }
@@ -432,6 +455,133 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class ProtoRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoRequest) */ {
+ public:
+  ProtoRequest();
+  virtual ~ProtoRequest();
+
+  ProtoRequest(const ProtoRequest& from);
+
+  inline ProtoRequest& operator=(const ProtoRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ProtoRequest(ProtoRequest&& from) noexcept
+    : ProtoRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ProtoRequest& operator=(ProtoRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ProtoRequest& default_instance();
+
+  static inline const ProtoRequest* internal_default_instance() {
+    return reinterpret_cast<const ProtoRequest*>(
+               &_ProtoRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(ProtoRequest* other);
+  friend void swap(ProtoRequest& a, ProtoRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ProtoRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ProtoRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ProtoRequest& from);
+  void MergeFrom(const ProtoRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ProtoRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  typedef ProtoRequest_REQ REQ;
+  static const REQ SIZE =
+    ProtoRequest_REQ_SIZE;
+  static const REQ SET =
+    ProtoRequest_REQ_SET;
+  static const REQ COUNT =
+    ProtoRequest_REQ_COUNT;
+  static const REQ HAS_NEW =
+    ProtoRequest_REQ_HAS_NEW;
+  static inline bool REQ_IsValid(int value) {
+    return ProtoRequest_REQ_IsValid(value);
+  }
+  static const REQ REQ_MIN =
+    ProtoRequest_REQ_REQ_MIN;
+  static const REQ REQ_MAX =
+    ProtoRequest_REQ_REQ_MAX;
+  static const int REQ_ARRAYSIZE =
+    ProtoRequest_REQ_REQ_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  REQ_descriptor() {
+    return ProtoRequest_REQ_descriptor();
+  }
+  static inline const ::std::string& REQ_Name(REQ value) {
+    return ProtoRequest_REQ_Name(value);
+  }
+  static inline bool REQ_Parse(const ::std::string& name,
+      REQ* value) {
+    return ProtoRequest_REQ_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // .ProtoRequest.REQ value = 1;
+  void clear_value();
+  static const int kValueFieldNumber = 1;
+  ::ProtoRequest_REQ value() const;
+  void set_value(::ProtoRequest_REQ value);
+
+  // @@protoc_insertion_point(class_scope:ProtoRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  int value_;
+  mutable int _cached_size_;
+  friend struct protobuf_particles_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class ProtoSize : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoSize) */ {
  public:
   ProtoSize();
@@ -466,7 +616,7 @@ class ProtoSize : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_ProtoSize_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(ProtoSize* other);
   friend void swap(ProtoSize& a, ProtoSize& b) {
@@ -563,7 +713,7 @@ class ProtoParticleSet : public ::google::protobuf::Message /* @@protoc_insertio
                &_ProtoParticleSet_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(ProtoParticleSet* other);
   friend void swap(ProtoParticleSet& a, ProtoParticleSet& b) {
@@ -788,6 +938,24 @@ inline void ProtoAcknowledge::set_state(::ProtoAcknowledge_ACK value) {
 
 // -------------------------------------------------------------------
 
+// ProtoRequest
+
+// .ProtoRequest.REQ value = 1;
+inline void ProtoRequest::clear_value() {
+  value_ = 0;
+}
+inline ::ProtoRequest_REQ ProtoRequest::value() const {
+  // @@protoc_insertion_point(field_get:ProtoRequest.value)
+  return static_cast< ::ProtoRequest_REQ >(value_);
+}
+inline void ProtoRequest::set_value(::ProtoRequest_REQ value) {
+  
+  value_ = value;
+  // @@protoc_insertion_point(field_set:ProtoRequest.value)
+}
+
+// -------------------------------------------------------------------
+
 // ProtoSize
 
 // uint64 value = 1;
@@ -850,6 +1018,8 @@ ProtoParticleSet::particles() const {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -861,6 +1031,11 @@ template <> struct is_proto_enum< ::ProtoAcknowledge_ACK> : ::google::protobuf::
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::ProtoAcknowledge_ACK>() {
   return ::ProtoAcknowledge_ACK_descriptor();
+}
+template <> struct is_proto_enum< ::ProtoRequest_REQ> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::ProtoRequest_REQ>() {
+  return ::ProtoRequest_REQ_descriptor();
 }
 
 }  // namespace protobuf
