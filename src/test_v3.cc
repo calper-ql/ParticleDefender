@@ -9,7 +9,13 @@ using namespace std;
 float random_float(float min, float max);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-int main(){
+int main(int argc, char* argv[]){
+	if(argc < 2) { 
+		status_failure("Please enter IP...");
+		return 1;
+	}
+
+
 	cout << "--START--" << endl;
 
 	glfwInit();
@@ -40,7 +46,7 @@ int main(){
 	ParticleDrawer pd;
 	if(!pd.init()) return 1;
 
-	ParticleRequest pr("192.168.1.105", 32323);
+	ParticleRequest pr(argv[1], 32323);
 
 	vector<float> pos;
 	vector<float> vel;
