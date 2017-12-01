@@ -15,15 +15,13 @@ std::vector<ProtoParticle> ParticleRequest::get_new_particles(){
 	std::vector<ProtoParticle> particles;
 
 	ProtoRequest req;
+	req.set_count(31);
 	req.set_value(ProtoRequest_REQ_HAS_NEW);
-
-	std::cout << "Req" << std::endl;
 	if(!tcp->send(req.SerializeAsString())){
 		tcp->close();
 		tcp->connect(ip, port);
 		return particles;
 	}
-
 	auto recv = tcp->receive(500);
 	try {
 		ProtoAcknowledge ps;
@@ -36,16 +34,13 @@ std::vector<ProtoParticle> ParticleRequest::get_new_particles(){
 		return particles;
 	}
 
-	std::cout << "Req" << std::endl;
-	
-	req.set_value(ProtoRequest_REQ_SIZE);
 
+	req.set_value(ProtoRequest_REQ_SIZE);
 	if(!tcp->send(req.SerializeAsString())){
 		tcp->close();
 		tcp->connect(ip, port);
 		return particles;
 	}
-
 	recv = tcp->receive(500);
 	uint64_t size;
 	try {
@@ -59,17 +54,13 @@ std::vector<ProtoParticle> ParticleRequest::get_new_particles(){
 		return particles;
 	}
 
-	std::cout << "Req" << std::endl;
-	
 	req.set_value(ProtoRequest_REQ_SET);
-
 	if(!tcp->send(req.SerializeAsString())){
 		tcp->close();
 		tcp->connect(ip, port);
 		return particles;
 	}
-
-	recv = tcp->receive(size);
+	recv = tcp->receive(size+1);
 	try {
 		ProtoParticleSet pps;
 		pps.ParseFromString(recv);

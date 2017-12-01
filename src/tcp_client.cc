@@ -52,12 +52,11 @@ std::string TCPClient::receive(size_t size){
 	ssize_t n = -1;
 	char read_buf[size];
 	if(alive) n = read(sock, read_buf, size);
-	std::cout << "READ" << std::endl;
 	if(n < 0){
 		alive = false;
 		return "";
 	}	
-	return std::string(read_buf);
+	return std::string(read_buf, n);
 }
 
 void TCPClient::close(){

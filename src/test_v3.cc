@@ -42,25 +42,47 @@ int main(){
 	vector<float> pos;
 	vector<float> vel;
 
+	float xmax = 1;
+	float ymax = 1;
+
 	while (!glfwWindowShouldClose(window)){
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		auto particles = pr.get_new_particles();
 		for(auto p: particles){
-			pos.push_back(p.position().x());
-			pos.push_back(p.position().y());
+
+			if(xmax < p.position().x()){
+				xmax = p.position().x();
+				std::cout << xmax << std::endl;
+			}
+
+			if(ymax < p.position().y()){
+				ymax = p.position().y();
+			}
+
+			pos.push_back(-((p.position().x()/xmax) * 0.5f - 0.25f));
+			pos.push_back(-((p.position().y()/ymax) * 0.5f - 0.25f));
 			pos.push_back(0);
-			vel.push_back(p.velocity().x());
-			vel.push_back(p.velocity().y());
-			vel.push_back(0);	
+			vel.push_back(-p.velocity().x()/5000.0);
+			vel.push_back(-p.velocity().y()/5000.0);
+			vel.push_back(0);
+			
+			if(pos.size()>100000){
+				pos.erase(pos.begin());
+				pos.erase(pos.begin());
+				pos.erase(pos.begin());
+				vel.erase(vel.begin());
+				vel.erase(vel.begin());
+				vel.erase(vel.begin());
+			}
 		}
 
 		for(size_t i = 0; i < pos.size(); i++){
 			pos[i] += vel[i];
 		}
 
-		pd.draw(pos, 0.4);
+		pd.draw(pos, 0.01);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
