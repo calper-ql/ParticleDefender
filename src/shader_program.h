@@ -8,6 +8,7 @@ class ShaderProgram {
 	private:
 		GLuint program;
 	public:
+		ShaderProgram();
 		ShaderProgram(std::string vertex_loc, std::string fragment_loc);
 		ShaderProgram(GLuint vertex, GLuint fragment);
 		void use();

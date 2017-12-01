@@ -31,6 +31,33 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
+
+namespace protobuf_particles_2eproto {
+// Internal implementation detail -- do not use these members.
+struct TableStruct {
+  static const ::google::protobuf::internal::ParseTableField entries[];
+  static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
+  static const ::google::protobuf::internal::ParseTable schema[4];
+  static const ::google::protobuf::internal::FieldMetadata field_metadata[];
+  static const ::google::protobuf::internal::SerializationTable serialization_table[];
+  static const ::google::protobuf::uint32 offsets[];
+};
+void AddDescriptors();
+void InitDefaultsProtoVectorImpl();
+void InitDefaultsProtoVector();
+void InitDefaultsProtoParticleImpl();
+void InitDefaultsProtoParticle();
+void InitDefaultsProtoAcknowledgeImpl();
+void InitDefaultsProtoAcknowledge();
+void InitDefaultsProtoParticleSetImpl();
+void InitDefaultsProtoParticleSet();
+inline void InitDefaults() {
+  InitDefaultsProtoVector();
+  InitDefaultsProtoParticle();
+  InitDefaultsProtoAcknowledge();
+  InitDefaultsProtoParticleSet();
+}
+}  // namespace protobuf_particles_2eproto
 class ProtoAcknowledge;
 class ProtoAcknowledgeDefaultTypeInternal;
 extern ProtoAcknowledgeDefaultTypeInternal _ProtoAcknowledge_default_instance_;
@@ -43,21 +70,6 @@ extern ProtoParticleSetDefaultTypeInternal _ProtoParticleSet_default_instance_;
 class ProtoVector;
 class ProtoVectorDefaultTypeInternal;
 extern ProtoVectorDefaultTypeInternal _ProtoVector_default_instance_;
-
-namespace protobuf_particles_2eproto {
-// Internal implementation detail -- do not call these.
-struct TableStruct {
-  static const ::google::protobuf::internal::ParseTableField entries[];
-  static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[];
-  static const ::google::protobuf::uint32 offsets[];
-  static const ::google::protobuf::internal::FieldMetadata field_metadata[];
-  static const ::google::protobuf::internal::SerializationTable serialization_table[];
-  static void InitDefaultsImpl();
-};
-void AddDescriptors();
-void InitDefaults();
-}  // namespace protobuf_particles_2eproto
 
 enum ProtoAcknowledge_ACK {
   ProtoAcknowledge_ACK_NONE = 0,
@@ -112,6 +124,7 @@ class ProtoVector : public ::google::protobuf::Message /* @@protoc_insertion_poi
   static const ::google::protobuf::Descriptor* descriptor();
   static const ProtoVector& default_instance();
 
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const ProtoVector* internal_default_instance() {
     return reinterpret_cast<const ProtoVector*>(
                &_ProtoVector_default_instance_);
@@ -190,7 +203,8 @@ class ProtoVector : public ::google::protobuf::Message /* @@protoc_insertion_poi
   float y_;
   float z_;
   mutable int _cached_size_;
-  friend struct protobuf_particles_2eproto::TableStruct;
+  friend struct ::protobuf_particles_2eproto::TableStruct;
+  friend void ::protobuf_particles_2eproto::InitDefaultsProtoVectorImpl();
 };
 // -------------------------------------------------------------------
 
@@ -223,6 +237,7 @@ class ProtoParticle : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const ProtoParticle& default_instance();
 
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const ProtoParticle* internal_default_instance() {
     return reinterpret_cast<const ProtoParticle*>(
                &_ProtoParticle_default_instance_);
@@ -280,8 +295,8 @@ class ProtoParticle : public ::google::protobuf::Message /* @@protoc_insertion_p
   void clear_position();
   static const int kPositionFieldNumber = 1;
   const ::ProtoVector& position() const;
-  ::ProtoVector* mutable_position();
   ::ProtoVector* release_position();
+  ::ProtoVector* mutable_position();
   void set_allocated_position(::ProtoVector* position);
 
   // .ProtoVector velocity = 2;
@@ -289,8 +304,8 @@ class ProtoParticle : public ::google::protobuf::Message /* @@protoc_insertion_p
   void clear_velocity();
   static const int kVelocityFieldNumber = 2;
   const ::ProtoVector& velocity() const;
-  ::ProtoVector* mutable_velocity();
   ::ProtoVector* release_velocity();
+  ::ProtoVector* mutable_velocity();
   void set_allocated_velocity(::ProtoVector* velocity);
 
   // @@protoc_insertion_point(class_scope:ProtoParticle)
@@ -300,7 +315,8 @@ class ProtoParticle : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ProtoVector* position_;
   ::ProtoVector* velocity_;
   mutable int _cached_size_;
-  friend struct protobuf_particles_2eproto::TableStruct;
+  friend struct ::protobuf_particles_2eproto::TableStruct;
+  friend void ::protobuf_particles_2eproto::InitDefaultsProtoParticleImpl();
 };
 // -------------------------------------------------------------------
 
@@ -333,6 +349,7 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
   static const ::google::protobuf::Descriptor* descriptor();
   static const ProtoAcknowledge& default_instance();
 
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const ProtoAcknowledge* internal_default_instance() {
     return reinterpret_cast<const ProtoAcknowledge*>(
                &_ProtoAcknowledge_default_instance_);
@@ -425,7 +442,8 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   int state_;
   mutable int _cached_size_;
-  friend struct protobuf_particles_2eproto::TableStruct;
+  friend struct ::protobuf_particles_2eproto::TableStruct;
+  friend void ::protobuf_particles_2eproto::InitDefaultsProtoAcknowledgeImpl();
 };
 // -------------------------------------------------------------------
 
@@ -458,6 +476,7 @@ class ProtoParticleSet : public ::google::protobuf::Message /* @@protoc_insertio
   static const ::google::protobuf::Descriptor* descriptor();
   static const ProtoParticleSet& default_instance();
 
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const ProtoParticleSet* internal_default_instance() {
     return reinterpret_cast<const ProtoParticleSet*>(
                &_ProtoParticleSet_default_instance_);
@@ -528,14 +547,14 @@ class ProtoParticleSet : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::ProtoParticle > particles_;
   mutable int _cached_size_;
-  friend struct protobuf_particles_2eproto::TableStruct;
+  friend struct ::protobuf_particles_2eproto::TableStruct;
+  friend void ::protobuf_particles_2eproto::InitDefaultsProtoParticleSetImpl();
 };
 // ===================================================================
 
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 #ifdef __GNUC__
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -593,7 +612,9 @@ inline bool ProtoParticle::has_position() const {
   return this != internal_default_instance() && position_ != NULL;
 }
 inline void ProtoParticle::clear_position() {
-  if (GetArenaNoVirtual() == NULL && position_ != NULL) delete position_;
+  if (GetArenaNoVirtual() == NULL && position_ != NULL) {
+    delete position_;
+  }
   position_ = NULL;
 }
 inline const ::ProtoVector& ProtoParticle::position() const {
@@ -601,6 +622,13 @@ inline const ::ProtoVector& ProtoParticle::position() const {
   // @@protoc_insertion_point(field_get:ProtoParticle.position)
   return p != NULL ? *p : *reinterpret_cast<const ::ProtoVector*>(
       &::_ProtoVector_default_instance_);
+}
+inline ::ProtoVector* ProtoParticle::release_position() {
+  // @@protoc_insertion_point(field_release:ProtoParticle.position)
+  
+  ::ProtoVector* temp = position_;
+  position_ = NULL;
+  return temp;
 }
 inline ::ProtoVector* ProtoParticle::mutable_position() {
   
@@ -610,21 +638,22 @@ inline ::ProtoVector* ProtoParticle::mutable_position() {
   // @@protoc_insertion_point(field_mutable:ProtoParticle.position)
   return position_;
 }
-inline ::ProtoVector* ProtoParticle::release_position() {
-  // @@protoc_insertion_point(field_release:ProtoParticle.position)
-  
-  ::ProtoVector* temp = position_;
-  position_ = NULL;
-  return temp;
-}
 inline void ProtoParticle::set_allocated_position(::ProtoVector* position) {
-  delete position_;
-  position_ = position;
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete position_;
+  }
   if (position) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      position = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, position, submessage_arena);
+    }
     
   } else {
     
   }
+  position_ = position;
   // @@protoc_insertion_point(field_set_allocated:ProtoParticle.position)
 }
 
@@ -633,7 +662,9 @@ inline bool ProtoParticle::has_velocity() const {
   return this != internal_default_instance() && velocity_ != NULL;
 }
 inline void ProtoParticle::clear_velocity() {
-  if (GetArenaNoVirtual() == NULL && velocity_ != NULL) delete velocity_;
+  if (GetArenaNoVirtual() == NULL && velocity_ != NULL) {
+    delete velocity_;
+  }
   velocity_ = NULL;
 }
 inline const ::ProtoVector& ProtoParticle::velocity() const {
@@ -641,6 +672,13 @@ inline const ::ProtoVector& ProtoParticle::velocity() const {
   // @@protoc_insertion_point(field_get:ProtoParticle.velocity)
   return p != NULL ? *p : *reinterpret_cast<const ::ProtoVector*>(
       &::_ProtoVector_default_instance_);
+}
+inline ::ProtoVector* ProtoParticle::release_velocity() {
+  // @@protoc_insertion_point(field_release:ProtoParticle.velocity)
+  
+  ::ProtoVector* temp = velocity_;
+  velocity_ = NULL;
+  return temp;
 }
 inline ::ProtoVector* ProtoParticle::mutable_velocity() {
   
@@ -650,21 +688,22 @@ inline ::ProtoVector* ProtoParticle::mutable_velocity() {
   // @@protoc_insertion_point(field_mutable:ProtoParticle.velocity)
   return velocity_;
 }
-inline ::ProtoVector* ProtoParticle::release_velocity() {
-  // @@protoc_insertion_point(field_release:ProtoParticle.velocity)
-  
-  ::ProtoVector* temp = velocity_;
-  velocity_ = NULL;
-  return temp;
-}
 inline void ProtoParticle::set_allocated_velocity(::ProtoVector* velocity) {
-  delete velocity_;
-  velocity_ = velocity;
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete velocity_;
+  }
   if (velocity) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      velocity = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, velocity, submessage_arena);
+    }
     
   } else {
     
   }
+  velocity_ = velocity;
   // @@protoc_insertion_point(field_set_allocated:ProtoParticle.velocity)
 }
 
@@ -723,7 +762,6 @@ ProtoParticleSet::particles() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

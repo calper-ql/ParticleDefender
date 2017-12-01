@@ -7,7 +7,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCES src/ansi_codes.cc src/file_loader.cc src/status_logger.cc src/shader_loader.cc src/shader_program.cc)
+set(SOURCES src/ansi_codes.cc src/file_loader.cc src/status_logger.cc src/shader_loader.cc src/shader_program.cc src/particle_drawer.cc)
 
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -23,3 +23,6 @@ set(LIBS ${OpenCL_LIBRARY} ${OPENGL_LIBRARIES} glfw)
 
 add_executable(test_v1 src/test_v1.cc ${SOURCES})
 target_link_libraries(test_v1 ${LIBS})
+
+add_executable(test_v2 src/test_v2.cc ${SOURCES})
+target_link_libraries(test_v2 ${LIBS})

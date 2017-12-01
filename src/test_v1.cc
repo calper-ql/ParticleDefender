@@ -21,6 +21,8 @@ float positions[] = {
 	0.5f, 0.0f, 0.0f
 };
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+
 int main(){
 	cout << "--START--" << endl;
 
@@ -44,6 +46,7 @@ int main(){
 		return 3;
 	}
 	glfwMakeContextCurrent(window);
+	glfwSetWindowSizeCallback(window, framebuffer_size_callback);
 
 	auto vertex_shader = ShaderLoader::load("GL_CODE/particle.vs", GL_VERTEX_SHADER);
 	if(vertex_shader == 0) return 1; 
@@ -101,3 +104,6 @@ int main(){
 	return 0;
 }
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
+} 

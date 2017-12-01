@@ -1,6 +1,10 @@
 #include "shader_program.h"
 #include "status_logger.h"
 
+ShaderProgram::ShaderProgram(){
+
+}
+
 ShaderProgram::ShaderProgram(std::string vertex_loc, std::string fragment_loc){
 	GLuint vertex = ShaderLoader::load(vertex_loc, GL_VERTEX_SHADER);
 	if(vertex == 0) throw std::exception();
