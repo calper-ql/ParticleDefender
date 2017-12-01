@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 PROJECT(MOTION_DEFENDER)
 
+message ("Don't forget to run gen_proto.sh!!! ")
+
 INCLUDE(FindProtobuf)
 FIND_PACKAGE(Protobuf REQUIRED)
 INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
@@ -43,3 +45,6 @@ target_link_libraries(test_v2 ${LIBS})
 
 add_executable(test_v3 src/test_v3.cc ${SOURCES})
 target_link_libraries(test_v3 ${LIBS})
+
+message ("Don't forget to run gen_proto.sh!!! ")
+
