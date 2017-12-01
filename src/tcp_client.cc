@@ -1,5 +1,6 @@
 #include "tcp_client.h"
 #include "status_logger.h"
+#include <signal.h>
 
 TCPClient::TCPClient(){
 	sock = -1;
@@ -9,6 +10,7 @@ TCPClient::TCPClient(){
 }
 
 bool TCPClient::connect(std::string address , int port) {
+	signal (SIGPIPE, SIG_IGN);
 	alive = false;
 	status_waiting(address + ":" + std::to_string(port), "CONNECTING");
 	sock = socket(AF_INET , SOCK_STREAM , 0);
@@ -50,6 +52,7 @@ std::string TCPClient::receive(size_t size){
 	ssize_t n = -1;
 	char read_buf[size];
 	if(alive) n = read(sock, read_buf, size);
+	std::cout << "READ" << std::endl;
 	if(n < 0){
 		alive = false;
 		return "";

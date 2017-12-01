@@ -14,27 +14,56 @@ ParticleRequest::~ParticleRequest(){
 std::vector<ProtoParticle> ParticleRequest::get_new_particles(){
 	std::vector<ProtoParticle> particles;
 
-	ProtoAcknowledge ack;
-	ack.set_state(ProtoAcknowledge_ACK_CONTINUE);
+	ProtoRequest req;
+	req.set_value(ProtoRequest_REQ_HAS_NEW);
 
-	if(!tcp->send(ack.SerializeAsString())){
+	std::cout << "Req" << std::endl;
+	if(!tcp->send(req.SerializeAsString())){
 		tcp->close();
 		tcp->connect(ip, port);
 		return particles;
 	}
 
 	auto recv = tcp->receive(500);
+	try {
+		ProtoAcknowledge ps;
+		ps.ParseFromString(recv);
+		auto value = ps.state();
+		if(value == ProtoAcknowledge_ACK_NEGATIVE){
+			return particles;
+		}
+	} catch (std::exception e) {
+		return particles;
+	}
+
+	std::cout << "Req" << std::endl;
+	
+	req.set_value(ProtoRequest_REQ_SIZE);
+
+	if(!tcp->send(req.SerializeAsString())){
+		tcp->close();
+		tcp->connect(ip, port);
+		return particles;
+	}
+
+	recv = tcp->receive(500);
 	uint64_t size;
 	try {
 		ProtoSize ps;
 		ps.ParseFromString(recv);
 		size = ps.value();
+		if(size == 0){
+			return particles;
+		}
 	} catch (std::exception e) {
 		return particles;
 	}
 
+	std::cout << "Req" << std::endl;
+	
+	req.set_value(ProtoRequest_REQ_SET);
 
-	if(!tcp->send(ack.SerializeAsString())){
+	if(!tcp->send(req.SerializeAsString())){
 		tcp->close();
 		tcp->connect(ip, port);
 		return particles;

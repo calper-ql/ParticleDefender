@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='particles.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"[\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"!\n\x03\x41\x43K\x12\x0c\n\x08POSITIVE\x10\x00\x12\x0c\n\x08NEGATIVE\x10\x01\"b\n\x0cProtoRequest\x12 \n\x05value\x18\x01 \x01(\x0e\x32\x11.ProtoRequest.REQ\"0\n\x03REQ\x12\x08\n\x04SIZE\x10\x00\x12\x07\n\x03SET\x10\x01\x12\t\n\x05\x43OUNT\x10\x02\x12\x0b\n\x07HAS_NEW\x10\x03\"\x1a\n\tProtoSize\x12\r\n\x05value\x18\x01 \x01(\x04\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
+  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"[\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"!\n\x03\x41\x43K\x12\x0c\n\x08POSITIVE\x10\x00\x12\x0c\n\x08NEGATIVE\x10\x01\"W\n\x0cProtoRequest\x12 \n\x05value\x18\x01 \x01(\x0e\x32\x11.ProtoRequest.REQ\"%\n\x03REQ\x12\x08\n\x04SIZE\x10\x00\x12\x07\n\x03SET\x10\x01\x12\x0b\n\x07HAS_NEW\x10\x03\"\x1a\n\tProtoSize\x12\r\n\x05value\x18\x01 \x01(\x04\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
 )
 
 
@@ -61,18 +61,14 @@ _PROTOREQUEST_REQ = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='COUNT', index=2, number=2,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='HAS_NEW', index=3, number=3,
+      name='HAS_NEW', index=2, number=3,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=291,
-  serialized_end=339,
+  serialized_end=328,
 )
 _sym_db.RegisterEnumDescriptor(_PROTOREQUEST_REQ)
 
@@ -90,21 +86,21 @@ _PROTOVECTOR = _descriptor.Descriptor(
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='y', full_name='ProtoVector.y', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='z', full_name='ProtoVector.z', index=2,
       number=3, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -135,14 +131,14 @@ _PROTOPARTICLE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='velocity', full_name='ProtoParticle.velocity', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -173,7 +169,7 @@ _PROTOACKNOWLEDGE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -205,7 +201,7 @@ _PROTOREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -220,7 +216,7 @@ _PROTOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=241,
-  serialized_end=339,
+  serialized_end=328,
 )
 
 
@@ -237,7 +233,7 @@ _PROTOSIZE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -250,8 +246,8 @@ _PROTOSIZE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=341,
-  serialized_end=367,
+  serialized_start=330,
+  serialized_end=356,
 )
 
 
@@ -268,7 +264,7 @@ _PROTOPARTICLESET = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -281,8 +277,8 @@ _PROTOPARTICLESET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=369,
-  serialized_end=422,
+  serialized_start=358,
+  serialized_end=411,
 )
 
 _PROTOPARTICLE.fields_by_name['position'].message_type = _PROTOVECTOR

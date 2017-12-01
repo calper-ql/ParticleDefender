@@ -39,18 +39,25 @@ int main(){
 
 	ParticleRequest pr("192.168.1.105", 32323);
 
+	vector<float> pos;
+	vector<float> vel;
 
 	while (!glfwWindowShouldClose(window)){
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		auto particles = pr.get_new_particles();
+		for(auto p: particles){
+			pos.push_back(p.position().x());
+			pos.push_back(p.position().y());
+			pos.push_back(0);
+			vel.push_back(p.velocity().x());
+			vel.push_back(p.velocity().y());
+			vel.push_back(0);	
+		}
 
-		vector<float> pos;
-		for(int i = 0; i < 100; i++){
-			pos.push_back(random_float(-1.0, 1.0));
-			pos.push_back(random_float(-1.0, 1.0));
-			pos.push_back(random_float(-1.0, 1.0));
+		for(size_t i = 0; i < pos.size(); i++){
+			pos[i] += vel[i];
 		}
 
 		pd.draw(pos, 0.4);
