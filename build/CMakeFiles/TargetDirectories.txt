@@ -1,3 +1,0 @@
-/Users/calper/Desktop/ParticleDefender/build/CMakeFiles/rebuild_cache.dir
-/Users/calper/Desktop/ParticleDefender/build/CMakeFiles/edit_cache.dir
-/Users/calper/Desktop/ParticleDefender/build/CMakeFiles/test_v1.dir
