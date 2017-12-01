@@ -20,6 +20,10 @@ message ProtoAcknowledge {
 	ACK state = 1;
 }
 
+message ProtoSize {
+	uint64 value=1;
+}
+
 message ProtoParticleSet {
 	repeated ProtoParticle particles = 1;
 }

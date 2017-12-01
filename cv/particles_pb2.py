@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='particles.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"a\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"\'\n\x03\x41\x43K\x12\x08\n\x04NONE\x10\x00\x12\x0c\n\x08\x43ONTINUE\x10\x01\x12\x08\n\x04STOP\x10\x02\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
+  serialized_pb=_b('\n\x0fparticles.proto\".\n\x0bProtoVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"O\n\rProtoParticle\x12\x1e\n\x08position\x18\x01 \x01(\x0b\x32\x0c.ProtoVector\x12\x1e\n\x08velocity\x18\x02 \x01(\x0b\x32\x0c.ProtoVector\"a\n\x10ProtoAcknowledge\x12$\n\x05state\x18\x01 \x01(\x0e\x32\x15.ProtoAcknowledge.ACK\"\'\n\x03\x41\x43K\x12\x08\n\x04NONE\x10\x00\x12\x0c\n\x08\x43ONTINUE\x10\x01\x12\x08\n\x04STOP\x10\x02\"\x1a\n\tProtoSize\x12\r\n\x05value\x18\x01 \x01(\x04\"5\n\x10ProtoParticleSet\x12!\n\tparticles\x18\x01 \x03(\x0b\x32\x0e.ProtoParticleb\x06proto3')
 )
 
 
@@ -166,6 +166,37 @@ _PROTOACKNOWLEDGE = _descriptor.Descriptor(
 )
 
 
+_PROTOSIZE = _descriptor.Descriptor(
+  name='ProtoSize',
+  full_name='ProtoSize',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='ProtoSize.value', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=247,
+  serialized_end=273,
+)
+
+
 _PROTOPARTICLESET = _descriptor.Descriptor(
   name='ProtoParticleSet',
   full_name='ProtoParticleSet',
@@ -192,8 +223,8 @@ _PROTOPARTICLESET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=247,
-  serialized_end=300,
+  serialized_start=275,
+  serialized_end=328,
 )
 
 _PROTOPARTICLE.fields_by_name['position'].message_type = _PROTOVECTOR
@@ -204,6 +235,7 @@ _PROTOPARTICLESET.fields_by_name['particles'].message_type = _PROTOPARTICLE
 DESCRIPTOR.message_types_by_name['ProtoVector'] = _PROTOVECTOR
 DESCRIPTOR.message_types_by_name['ProtoParticle'] = _PROTOPARTICLE
 DESCRIPTOR.message_types_by_name['ProtoAcknowledge'] = _PROTOACKNOWLEDGE
+DESCRIPTOR.message_types_by_name['ProtoSize'] = _PROTOSIZE
 DESCRIPTOR.message_types_by_name['ProtoParticleSet'] = _PROTOPARTICLESET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -227,6 +259,13 @@ ProtoAcknowledge = _reflection.GeneratedProtocolMessageType('ProtoAcknowledge', 
   # @@protoc_insertion_point(class_scope:ProtoAcknowledge)
   ))
 _sym_db.RegisterMessage(ProtoAcknowledge)
+
+ProtoSize = _reflection.GeneratedProtocolMessageType('ProtoSize', (_message.Message,), dict(
+  DESCRIPTOR = _PROTOSIZE,
+  __module__ = 'particles_pb2'
+  # @@protoc_insertion_point(class_scope:ProtoSize)
+  ))
+_sym_db.RegisterMessage(ProtoSize)
 
 ProtoParticleSet = _reflection.GeneratedProtocolMessageType('ProtoParticleSet', (_message.Message,), dict(
   DESCRIPTOR = _PROTOPARTICLESET,

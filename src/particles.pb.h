@@ -37,7 +37,7 @@ namespace protobuf_particles_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[4];
+  static const ::google::protobuf::internal::ParseTable schema[5];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -49,12 +49,15 @@ void InitDefaultsProtoParticleImpl();
 void InitDefaultsProtoParticle();
 void InitDefaultsProtoAcknowledgeImpl();
 void InitDefaultsProtoAcknowledge();
+void InitDefaultsProtoSizeImpl();
+void InitDefaultsProtoSize();
 void InitDefaultsProtoParticleSetImpl();
 void InitDefaultsProtoParticleSet();
 inline void InitDefaults() {
   InitDefaultsProtoVector();
   InitDefaultsProtoParticle();
   InitDefaultsProtoAcknowledge();
+  InitDefaultsProtoSize();
   InitDefaultsProtoParticleSet();
 }
 }  // namespace protobuf_particles_2eproto
@@ -67,6 +70,9 @@ extern ProtoParticleDefaultTypeInternal _ProtoParticle_default_instance_;
 class ProtoParticleSet;
 class ProtoParticleSetDefaultTypeInternal;
 extern ProtoParticleSetDefaultTypeInternal _ProtoParticleSet_default_instance_;
+class ProtoSize;
+class ProtoSizeDefaultTypeInternal;
+extern ProtoSizeDefaultTypeInternal _ProtoSize_default_instance_;
 class ProtoVector;
 class ProtoVectorDefaultTypeInternal;
 extern ProtoVectorDefaultTypeInternal _ProtoVector_default_instance_;
@@ -447,6 +453,105 @@ class ProtoAcknowledge : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class ProtoSize : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoSize) */ {
+ public:
+  ProtoSize();
+  virtual ~ProtoSize();
+
+  ProtoSize(const ProtoSize& from);
+
+  inline ProtoSize& operator=(const ProtoSize& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ProtoSize(ProtoSize&& from) noexcept
+    : ProtoSize() {
+    *this = ::std::move(from);
+  }
+
+  inline ProtoSize& operator=(ProtoSize&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ProtoSize& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ProtoSize* internal_default_instance() {
+    return reinterpret_cast<const ProtoSize*>(
+               &_ProtoSize_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(ProtoSize* other);
+  friend void swap(ProtoSize& a, ProtoSize& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ProtoSize* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ProtoSize* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ProtoSize& from);
+  void MergeFrom(const ProtoSize& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ProtoSize* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 value = 1;
+  void clear_value();
+  static const int kValueFieldNumber = 1;
+  ::google::protobuf::uint64 value() const;
+  void set_value(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:ProtoSize)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 value_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_particles_2eproto::TableStruct;
+  friend void ::protobuf_particles_2eproto::InitDefaultsProtoSizeImpl();
+};
+// -------------------------------------------------------------------
+
 class ProtoParticleSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoParticleSet) */ {
  public:
   ProtoParticleSet();
@@ -482,7 +587,7 @@ class ProtoParticleSet : public ::google::protobuf::Message /* @@protoc_insertio
                &_ProtoParticleSet_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(ProtoParticleSet* other);
   friend void swap(ProtoParticleSet& a, ProtoParticleSet& b) {
@@ -727,6 +832,24 @@ inline void ProtoAcknowledge::set_state(::ProtoAcknowledge_ACK value) {
 
 // -------------------------------------------------------------------
 
+// ProtoSize
+
+// uint64 value = 1;
+inline void ProtoSize::clear_value() {
+  value_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 ProtoSize::value() const {
+  // @@protoc_insertion_point(field_get:ProtoSize.value)
+  return value_;
+}
+inline void ProtoSize::set_value(::google::protobuf::uint64 value) {
+  
+  value_ = value;
+  // @@protoc_insertion_point(field_set:ProtoSize.value)
+}
+
+// -------------------------------------------------------------------
+
 // ProtoParticleSet
 
 // repeated .ProtoParticle particles = 1;
@@ -762,6 +885,8 @@ ProtoParticleSet::particles() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
