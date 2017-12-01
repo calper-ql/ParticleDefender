@@ -3,6 +3,7 @@ A little interactive program for my AR3200 class
 
 ## Requirements:
 you need glfw installed on your computer with OpenGL 3.3 and higher
+
 google's protobuf
 
 ## Build
