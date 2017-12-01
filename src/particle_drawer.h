@@ -7,15 +7,16 @@
 
 class ParticleDrawer {
 	private:
-		unsigned int VBO, VAO, instanceVBO;
+		GLuint VBO, colorVBO, VAO, instanceVBO;
 		ShaderProgram program;
+		GLuint vertex_size_location, vertex_color_location;
 
 	public:
 		ParticleDrawer();
 		~ParticleDrawer();
 		
 		bool init();
-		bool draw(std::vector<float> positions, float size);
+		bool draw(std::vector<float> positions, std::vector<float> color, float size);
 };
 
 #endif 

@@ -37,12 +37,6 @@ message(STATUS "COPIED GL SRC")
 
 set(LIBS ${OpenCL_LIBRARY} ${OPENGL_LIBRARIES} glfw ${PROTOBUF_LIBRARY})
 
-add_executable(test_v1 src/test_v1.cc ${SOURCES})
-target_link_libraries(test_v1 ${LIBS} )
-
-add_executable(test_v2 src/test_v2.cc ${SOURCES})
-target_link_libraries(test_v2 ${LIBS})
-
 add_executable(test_v3 src/test_v3.cc ${SOURCES})
 target_link_libraries(test_v3 ${LIBS})
 

@@ -10,22 +10,22 @@ ShaderProgram::ShaderProgram(std::string vertex_loc, std::string fragment_loc){
 	if(vertex == 0) throw std::exception();
 	GLuint fragment = ShaderLoader::load(fragment_loc, GL_FRAGMENT_SHADER);
 	if(fragment == 0) throw std::exception();
-	
+
 	status_waiting("creating gl program", "LINKING");
 	program = glCreateProgram();
 	glAttachShader(program, vertex);
 	glAttachShader(program, fragment);
 	glLinkProgram(program);
-	
+
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
-	
+
 	int success;
 	char infoLog[512];
 	glGetProgramiv(program, GL_LINK_STATUS, &success);
 	if(!success){
-		status_failure(infoLog);
 		glGetProgramInfoLog(program, 512, NULL, infoLog);
+		status_failure(infoLog);
 		throw std::exception();
 	}
 	status_success("gl program linked");
@@ -34,22 +34,22 @@ ShaderProgram::ShaderProgram(std::string vertex_loc, std::string fragment_loc){
 ShaderProgram::ShaderProgram(GLuint vertex, GLuint fragment){
 	if(vertex == 0) throw std::exception();
 	if(fragment == 0) throw std::exception();
-	
+
 	status_waiting("creating gl program", "LINKING");
 	program = glCreateProgram();
 	glAttachShader(program, vertex);
 	glAttachShader(program, fragment);
 	glLinkProgram(program);
-	
+
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
-	
+
 	int success;
 	char infoLog[512];
 	glGetProgramiv(program, GL_LINK_STATUS, &success);
 	if(!success){
-		status_failure(infoLog);
 		glGetProgramInfoLog(program, 512, NULL, infoLog);
+		status_failure(infoLog);
 		throw std::exception();
 	}
 	status_success("gl program linked");

@@ -34,19 +34,23 @@ int main(){
 	glfwMakeContextCurrent(window);
 	glfwSetWindowSizeCallback(window, framebuffer_size_callback);
 
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+
 	ParticleDrawer pd;
 	if(!pd.init()) return 1;
 
-	ParticleRequest pr("192.168.1.105", 32323);
+	ParticleRequest pr("127.0.0.1", 32323);
 
 	vector<float> pos;
 	vector<float> vel;
+	vector<float> color;
 
 	float xmax = 1;
 	float ymax = 1;
 
 	while (!glfwWindowShouldClose(window)){
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		auto particles = pr.get_new_particles();
@@ -66,22 +70,37 @@ int main(){
 			vel.push_back(-p.velocity().x()/5000.0);
 			vel.push_back(-p.velocity().y()/5000.0);
 			vel.push_back(0);
-			
-			if(pos.size()>100000){
+			color.push_back(random_float(0, 1));
+			color.push_back(random_float(0, 1));
+			color.push_back(random_float(0, 1));
+			color.push_back(1);
+
+			if(pos.size()>1000000){
 				pos.erase(pos.begin());
 				pos.erase(pos.begin());
 				pos.erase(pos.begin());
 				vel.erase(vel.begin());
 				vel.erase(vel.begin());
 				vel.erase(vel.begin());
+				color.erase(color.begin());
+				color.erase(color.begin());
+				color.erase(color.begin());
+				color.erase(color.begin());
 			}
 		}
 
 		for(size_t i = 0; i < pos.size(); i++){
 			pos[i] += vel[i];
+			vel[i] *= 0.999;
 		}
 
-		pd.draw(pos, 0.005);
+		for(size_t i = 0; i < color.size(); i++){
+			if((i+1) % 4 == 0){
+				color[i] *= 0.999;
+			}
+		}
+		
+		pd.draw(pos, color, 0.005);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
