@@ -40,7 +40,7 @@ int main(){
 	ParticleDrawer pd;
 	if(!pd.init()) return 1;
 
-	ParticleRequest pr("127.0.0.1", 32323);
+	ParticleRequest pr("192.168.1.105", 32323);
 
 	vector<float> pos;
 	vector<float> vel;

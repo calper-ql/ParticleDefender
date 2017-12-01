@@ -10,6 +10,7 @@ TCPClient::TCPClient(){
 }
 
 bool TCPClient::connect(std::string address , int port) {
+	usleep(100000);
 	signal (SIGPIPE, SIG_IGN);
 	alive = false;
 	status_waiting(address + ":" + std::to_string(port), "CONNECTING");
@@ -18,6 +19,11 @@ bool TCPClient::connect(std::string address , int port) {
 		status_failure("Socket create error");
 		return false;
 	}
+
+	struct timeval tv;
+	tv.tv_sec = 5;  
+	tv.tv_usec = 0;
+	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv,sizeof(struct timeval));
 
 	struct in_addr addr;
 	if(!inet_aton(address.c_str(), &addr)){
