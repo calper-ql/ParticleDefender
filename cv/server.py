@@ -18,7 +18,7 @@ class Server:
         print ('Socket bind complete')
         
         self.lock = Lock()
-        self.data = ''
+        self.data = ProtoParticleSet()
         self.count = 0
 
         t = Thread(target = self.listen)
@@ -42,7 +42,11 @@ class Server:
 
     def set_new_data(self, data):
         self.lock.acquire()
-        self.data = data
+        n = self.data.particles.add()
+        n.position.x = data.position.x
+        n.position.y = data.position.y
+        n.velocity.x = data.velocity.x
+        n.velocity.y = data.velocity.y
         self.count += 1
         self.lock.release()
 
@@ -51,14 +55,14 @@ class Server:
       
         def send_ack(conn, pos):
             pa = ProtoAcknowledge()
+            pa.count = 10
             if(pos):
                 pa.state = ProtoAcknowledge.POSITIVE
             else:
                 pa.state = ProtoAcknowledge.NEGATIVE
-            print("Sending ack: ", pos, " ", pa.SerializeToString())
             conn.send(pa.SerializeToString())
         
-        data = ''
+        buff = ''
         last_count = 0
         while(1):
             rv = conn.recv(1000)
@@ -71,13 +75,17 @@ class Server:
                     last_count = self.count
                     data = self.data
                     pos = True
+                    buff = self.data.SerializeToString()
+                    self.data = ProtoParticleSet() 
                 self.lock.release()
                 send_ack(conn, pos)
             if pr.value == ProtoRequest.SIZE:
                 ps = ProtoSize()
-                ps.value = len(data)
+                ps.value = len(buff)
                 conn.send(ps.SerializeToString())
             if pr.value == ProtoRequest.SET:
-                conn.send(data)
+                conn.send(buff)
+                buff = ''
+
 
 
