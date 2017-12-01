@@ -24,7 +24,7 @@ int main(){
 	// glfw window creation
 	// --------------------
 	//glfwWindowHint(GLFW_VISIBLE, false);
-	GLFWwindow* window = glfwCreateWindow(500, 500, "LearnOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(500, 500, "ParticleDefender", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -54,15 +54,14 @@ int main(){
 
 			if(xmax < p.position().x()){
 				xmax = p.position().x();
-				std::cout << xmax << std::endl;
 			}
 
 			if(ymax < p.position().y()){
 				ymax = p.position().y();
 			}
 
-			pos.push_back(-((p.position().x()/xmax) * 0.5f - 0.25f));
-			pos.push_back(-((p.position().y()/ymax) * 0.5f - 0.25f));
+			pos.push_back(-((p.position().x()/xmax) * 0.1f - 0.05f));
+			pos.push_back(-((p.position().y()/ymax) * 0.1f - 0.05f));
 			pos.push_back(0);
 			vel.push_back(-p.velocity().x()/5000.0);
 			vel.push_back(-p.velocity().y()/5000.0);
@@ -82,7 +81,7 @@ int main(){
 			pos[i] += vel[i];
 		}
 
-		pd.draw(pos, 0.01);
+		pd.draw(pos, 0.005);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -98,5 +97,9 @@ float random_float(float min, float max) {
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+#ifdef __APPLE__	
+	glViewport(0, 0, width*2, height*2);
+#else
 	glViewport(0, 0, width, height);
+#endif
 } 

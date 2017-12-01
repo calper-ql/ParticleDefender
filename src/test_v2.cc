@@ -23,7 +23,7 @@ int main(){
 	// glfw window creation
 	// --------------------
 	//glfwWindowHint(GLFW_VISIBLE, false);
-	GLFWwindow* window = glfwCreateWindow(500, 500, "LearnOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(500, 500, "TestV2", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
