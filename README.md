@@ -14,4 +14,4 @@ you need glfw installed on your computer with OpenGL 3.3 and higher
 	test_v 1 and 2 are just for testing.
 	test_v3 is for show :)
 
-[![YAAAY!](https://img.youtube.com/vi/3ZX1oP9X084/200.jpg)](https://www.youtube.com/watch?v=3ZX1oP9X084)
+[![Example](https://img.youtube.com/vi/3ZX1oP9X084/0.jpg)](https://www.youtube.com/watch?v=3ZX1oP9X084)
