@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message ProtoVector {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message ProtoParticle {
+	ProtoVector position = 1;
+	ProtoVector velocity = 2;
+}
+
+message ProtoAcknowledge {
+	enum ACK {
+		NONE = 0;
+		CONTINUE = 1;
+		STOP = 2;
+	}
+	ACK state = 1;
+}
+
+message ProtoParticleSet {
+	repeated ProtoParticle particles = 1;
+}
+

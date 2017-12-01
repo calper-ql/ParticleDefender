@@ -1,0 +1,9 @@
+#ifndef OPENGL_SETTINGS_H
+#define OPENGL_SETTINGS_H
+
+#define GL3_PROTOTYPES 1
+#define GL_GLEXT_PROTOTYPES 1
+#define GLFW_INCLUDE_GLCOREARB
+#include <GLFW/glfw3.h>
+
+#endif
