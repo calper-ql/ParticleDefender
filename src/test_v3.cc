@@ -73,8 +73,8 @@ int main(int argc, char* argv[]){
 			pos.push_back(-((p.position().x()/xmax) * 0.1f - 0.05f));
 			pos.push_back(-((p.position().y()/ymax) * 0.1f - 0.05f));
 			pos.push_back(0);
-			vel.push_back(-p.velocity().x()/5000.0);
-			vel.push_back(-p.velocity().y()/5000.0);
+			vel.push_back(-p.velocity().x()/10000.0);
+			vel.push_back(-p.velocity().y()/10000.0);
 			vel.push_back(0);
 			color.push_back(random_float(0, 1));
 			color.push_back(random_float(0, 1));
@@ -97,12 +97,12 @@ int main(int argc, char* argv[]){
 
 		for(size_t i = 0; i < pos.size(); i++){
 			pos[i] += vel[i];
-			vel[i] *= 0.999;
+			vel[i] *= 0.9999;
 		}
 
 		for(size_t i = 0; i < color.size(); i++){
 			if((i+1) % 4 == 0){
-				color[i] *= 0.999;
+				color[i] *= 0.9999;
 			}
 		}
 		

@@ -85,7 +85,7 @@ class Server:
                 conn.send(ps.SerializeToString())
             if pr.value == ProtoRequest.SET:
                 conn.send(buff)
-                buff = ''
+                buff = ''.encode()
 
 
 

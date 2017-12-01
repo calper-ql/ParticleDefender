@@ -23,7 +23,7 @@ from server import Server
 from particles_pb2 import *
 
 scale = 0.2
-tresh = 5.0
+tresh = 4.0
 
 server = Server(32323)
 
