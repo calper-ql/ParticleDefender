@@ -19,6 +19,7 @@ from __future__ import print_function
 import numpy as np
 import cv2
 from server import Server
+from particles_pb2 import *
 
 scale = 0.4
 
@@ -32,8 +33,20 @@ def draw_flow(img, flow, step=16):
     lines = np.int32(lines + 0.5)
     vis = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
     cv2.polylines(vis, lines, 0, (0, 255, 0))
+    pps = ProtoParticleSet();
+    pp_s = []
     for (x1, y1), (_x2, _y2) in lines:
         cv2.circle(vis, (x1, y1), 1, (0, 255, 0), -1)
+        pp = ProtoParticle()
+        pp.position.x = 0.0
+        pp.position.y = 0.0
+        pp.position.z = 0.0
+        pp.velocity.x = 0.001
+        pp.velocity.y = 0.001
+        pp.velocity.z = 0.001
+        pp_s.append(pp)
+    pps.particles.extend(pp_s)
+    server.set_new_data(pps.SerializeToString())
     return vis
 
 

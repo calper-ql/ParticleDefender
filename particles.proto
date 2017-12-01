@@ -17,6 +17,7 @@ message ProtoAcknowledge {
 		NEGATIVE = 1;
 	}
 	ACK state = 1;
+	uint64 count = 2;
 }
 
 message ProtoRequest {
@@ -26,6 +27,7 @@ message ProtoRequest {
 		HAS_NEW = 3;
 	}
 	REQ value = 1;
+	uint64 count = 2;
 }
 
 message ProtoSize {

@@ -203,12 +203,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoAcknowledge, state_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoAcknowledge, count_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoRequest, value_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoRequest, count_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ProtoSize, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -226,9 +228,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 0, -1, sizeof(::ProtoVector)},
   { 8, -1, sizeof(::ProtoParticle)},
   { 15, -1, sizeof(::ProtoAcknowledge)},
-  { 21, -1, sizeof(::ProtoRequest)},
-  { 27, -1, sizeof(::ProtoSize)},
-  { 33, -1, sizeof(::ProtoParticleSet)},
+  { 22, -1, sizeof(::ProtoRequest)},
+  { 29, -1, sizeof(::ProtoSize)},
+  { 35, -1, sizeof(::ProtoParticleSet)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -265,17 +267,18 @@ void AddDescriptorsImpl() {
       "\n\017particles.proto\".\n\013ProtoVector\022\t\n\001x\030\001 "
       "\001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"O\n\rProtoPartic"
       "le\022\036\n\010position\030\001 \001(\0132\014.ProtoVector\022\036\n\010ve"
-      "locity\030\002 \001(\0132\014.ProtoVector\"[\n\020ProtoAckno"
+      "locity\030\002 \001(\0132\014.ProtoVector\"j\n\020ProtoAckno"
       "wledge\022$\n\005state\030\001 \001(\0162\025.ProtoAcknowledge"
-      ".ACK\"!\n\003ACK\022\014\n\010POSITIVE\020\000\022\014\n\010NEGATIVE\020\001\""
-      "W\n\014ProtoRequest\022 \n\005value\030\001 \001(\0162\021.ProtoRe"
-      "quest.REQ\"%\n\003REQ\022\010\n\004SIZE\020\000\022\007\n\003SET\020\001\022\013\n\007H"
-      "AS_NEW\020\003\"\032\n\tProtoSize\022\r\n\005value\030\001 \001(\004\"5\n\020"
-      "ProtoParticleSet\022!\n\tparticles\030\001 \003(\0132\016.Pr"
-      "otoParticleb\006proto3"
+      ".ACK\022\r\n\005count\030\002 \001(\004\"!\n\003ACK\022\014\n\010POSITIVE\020\000"
+      "\022\014\n\010NEGATIVE\020\001\"f\n\014ProtoRequest\022 \n\005value\030"
+      "\001 \001(\0162\021.ProtoRequest.REQ\022\r\n\005count\030\002 \001(\004\""
+      "%\n\003REQ\022\010\n\004SIZE\020\000\022\007\n\003SET\020\001\022\013\n\007HAS_NEW\020\003\"\032"
+      "\n\tProtoSize\022\r\n\005value\030\001 \001(\004\"5\n\020ProtoParti"
+      "cleSet\022!\n\tparticles\030\001 \003(\0132\016.ProtoParticl"
+      "eb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 419);
+      descriptor, 449);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "particles.proto", &protobuf_RegisterTypes);
 }
@@ -952,6 +955,7 @@ void ProtoAcknowledge::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ProtoAcknowledge::kStateFieldNumber;
+const int ProtoAcknowledge::kCountFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ProtoAcknowledge::ProtoAcknowledge()
@@ -967,12 +971,16 @@ ProtoAcknowledge::ProtoAcknowledge(const ProtoAcknowledge& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  state_ = from.state_;
+  ::memcpy(&count_, &from.count_,
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&count_)) + sizeof(state_));
   // @@protoc_insertion_point(copy_constructor:ProtoAcknowledge)
 }
 
 void ProtoAcknowledge::SharedCtor() {
-  state_ = 0;
+  ::memset(&count_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&count_)) + sizeof(state_));
   _cached_size_ = 0;
 }
 
@@ -1013,7 +1021,9 @@ void ProtoAcknowledge::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  state_ = 0;
+  ::memset(&count_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&count_)) + sizeof(state_));
   _internal_metadata_.Clear();
 }
 
@@ -1036,6 +1046,20 @@ bool ProtoAcknowledge::MergePartialFromCodedStream(
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
           set_state(static_cast< ::ProtoAcknowledge_ACK >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 count = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &count_)));
         } else {
           goto handle_unusual;
         }
@@ -1074,6 +1098,11 @@ void ProtoAcknowledge::SerializeWithCachedSizes(
       1, this->state(), output);
   }
 
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->count(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1094,6 +1123,11 @@ void ProtoAcknowledge::SerializeWithCachedSizes(
       1, this->state(), target);
   }
 
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->count(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1111,6 +1145,13 @@ size_t ProtoAcknowledge::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->count());
+  }
+
   // .ProtoAcknowledge.ACK state = 1;
   if (this->state() != 0) {
     total_size += 1 +
@@ -1146,6 +1187,9 @@ void ProtoAcknowledge::MergeFrom(const ProtoAcknowledge& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.count() != 0) {
+    set_count(from.count());
+  }
   if (from.state() != 0) {
     set_state(from.state());
   }
@@ -1175,6 +1219,7 @@ void ProtoAcknowledge::Swap(ProtoAcknowledge* other) {
 }
 void ProtoAcknowledge::InternalSwap(ProtoAcknowledge* other) {
   using std::swap;
+  swap(count_, other->count_);
   swap(state_, other->state_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
@@ -1192,6 +1237,7 @@ void ProtoRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ProtoRequest::kValueFieldNumber;
+const int ProtoRequest::kCountFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ProtoRequest::ProtoRequest()
@@ -1207,12 +1253,16 @@ ProtoRequest::ProtoRequest(const ProtoRequest& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  value_ = from.value_;
+  ::memcpy(&count_, &from.count_,
+    static_cast<size_t>(reinterpret_cast<char*>(&value_) -
+    reinterpret_cast<char*>(&count_)) + sizeof(value_));
   // @@protoc_insertion_point(copy_constructor:ProtoRequest)
 }
 
 void ProtoRequest::SharedCtor() {
-  value_ = 0;
+  ::memset(&count_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&value_) -
+      reinterpret_cast<char*>(&count_)) + sizeof(value_));
   _cached_size_ = 0;
 }
 
@@ -1253,7 +1303,9 @@ void ProtoRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  value_ = 0;
+  ::memset(&count_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&value_) -
+      reinterpret_cast<char*>(&count_)) + sizeof(value_));
   _internal_metadata_.Clear();
 }
 
@@ -1276,6 +1328,20 @@ bool ProtoRequest::MergePartialFromCodedStream(
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
           set_value(static_cast< ::ProtoRequest_REQ >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 count = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &count_)));
         } else {
           goto handle_unusual;
         }
@@ -1314,6 +1380,11 @@ void ProtoRequest::SerializeWithCachedSizes(
       1, this->value(), output);
   }
 
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->count(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1334,6 +1405,11 @@ void ProtoRequest::SerializeWithCachedSizes(
       1, this->value(), target);
   }
 
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->count(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1351,6 +1427,13 @@ size_t ProtoRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // uint64 count = 2;
+  if (this->count() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->count());
+  }
+
   // .ProtoRequest.REQ value = 1;
   if (this->value() != 0) {
     total_size += 1 +
@@ -1386,6 +1469,9 @@ void ProtoRequest::MergeFrom(const ProtoRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.count() != 0) {
+    set_count(from.count());
+  }
   if (from.value() != 0) {
     set_value(from.value());
   }
@@ -1415,6 +1501,7 @@ void ProtoRequest::Swap(ProtoRequest* other) {
 }
 void ProtoRequest::InternalSwap(ProtoRequest* other) {
   using std::swap;
+  swap(count_, other->count_);
   swap(value_, other->value_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
