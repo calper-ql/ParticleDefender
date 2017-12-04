@@ -15,7 +15,6 @@ int main(int argc, char* argv[]){
 		return 1;
 	}
 
-
 	cout << "--START--" << endl;
 
 	glfwInit();
@@ -52,8 +51,23 @@ int main(int argc, char* argv[]){
 	vector<float> vel;
 	vector<float> color;
 
+	for(int i = 0; i < 1000000; i++){
+		pos.push_back(0);
+		pos.push_back(0);
+		pos.push_back(0);
+		vel.push_back(0);
+		vel.push_back(0);
+		vel.push_back(0);
+		color.push_back(random_float(0, 1));
+		color.push_back(random_float(0, 1));
+		color.push_back(random_float(0, 1));
+		color.push_back(1.0);
+	}
+
 	float xmax = 1;
 	float ymax = 1;
+
+	size_t cursor = 0;
 
 	while (!glfwWindowShouldClose(window)){
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -70,28 +84,19 @@ int main(int argc, char* argv[]){
 				ymax = p.position().y();
 			}
 
-			pos.push_back(-((p.position().x()/xmax) * 0.1f - 0.05f));
-			pos.push_back(-((p.position().y()/ymax) * 0.1f - 0.05f));
-			pos.push_back(0);
-			vel.push_back(-p.velocity().x()/10000.0);
-			vel.push_back(-p.velocity().y()/10000.0);
-			vel.push_back(0);
-			color.push_back(random_float(0, 1));
-			color.push_back(random_float(0, 1));
-			color.push_back(random_float(0, 1));
-			color.push_back(1);
-
-			if(pos.size()>1000000){
-				pos.erase(pos.begin());
-				pos.erase(pos.begin());
-				pos.erase(pos.begin());
-				vel.erase(vel.begin());
-				vel.erase(vel.begin());
-				vel.erase(vel.begin());
-				color.erase(color.begin());
-				color.erase(color.begin());
-				color.erase(color.begin());
-				color.erase(color.begin());
+			for(int i = 0; i < 20; i++){
+				pos[cursor*3] = (-((p.position().x()/xmax) * 0.2f - 0.1f));
+				pos[cursor*3+1] = (-((p.position().y()/ymax) * 0.2f - 0.1f));
+				pos[cursor*3+2] = (0);
+				vel[cursor*3] = (-p.velocity().x()/2000.0 + random_float(-0.001, 0.001));
+				vel[cursor*3+1] = (-p.velocity().y()/2000.0 + random_float(-0.001, 0.001));
+				vel[cursor*3+2] = (0);
+				//color[cursor*3+3] = (1);
+				cursor++;
+				if(pos.size()/3 <= cursor){
+					std::cout << "CURSOR REWIND: " << pos.size()/3 << std::endl;
+					cursor = 0;
+				}
 			}
 		}
 
@@ -100,12 +105,6 @@ int main(int argc, char* argv[]){
 			vel[i] *= 0.9999;
 		}
 
-		for(size_t i = 0; i < color.size(); i++){
-			if((i+1) % 4 == 0){
-				color[i] *= 0.9999;
-			}
-		}
-		
 		pd.draw(pos, color, 0.005);
 
 		glfwSwapBuffers(window);
